@@ -51,7 +51,7 @@ class ClearSituation():
 			self.clearer.assign_stateless(StatelessClearerTags)
 			self.clear_receiver.assign_stateless(StatelessSeekingTags)
 			self.clear_seeker.assign_stateless(StatelessSeekingTags)
-			yield play.tick(self.clearer, self.clear_receiver, self.clear_seeker)
+			yield play.tick(self.clearer, self.clear_receiver, self.clear_seeker) #would yield into role assignment
 
 
 
