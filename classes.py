@@ -47,11 +47,12 @@ class ClearSituation():
 		self.clear_seeker = Role()
 
 	def tick():
-		while (situation == situational_analysis()):
+		while (situation == situational_analysis()): #check if current situation is still valid
 			self.clearer.assign_stateless(StatelessClearerTags)
 			self.clear_receiver.assign_stateless(StatelessSeekingTags)
 			self.clear_seeker.assign_stateless(StatelessSeekingTags)
 			yield play.tick(self.clearer, self.clear_receiver, self.clear_seeker) #would yield into role assignment
+		return None #return somehting to indicate a new situation has been reached
 
 
 
