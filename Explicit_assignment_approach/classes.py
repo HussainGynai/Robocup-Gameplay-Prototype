@@ -217,6 +217,7 @@ class PassToSeeker(Play):
         First create all tactics and roles to be used
         Change prioirties of roles if needed
         pass a list of roles into role_assignment()
+        call tactic.tick() to check for assignment
         yield
         repeat
         """

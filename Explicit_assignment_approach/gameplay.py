@@ -1,8 +1,7 @@
 import classes
 from typing import List, Set, Optional, Tuple, Type, TypeVar
 
-OUR_ROBOTS = [1,2,3,4]
-THEIR_ROBOTS = [7,8,9,10,11,12]
+OUR_ROBOTS = [1,2,3,4] #using a reduced number of robots to show role replacing
 
 
 
