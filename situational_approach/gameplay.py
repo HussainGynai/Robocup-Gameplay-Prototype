@@ -32,7 +32,7 @@ def gameplay():
             play = play_selector(situation)
             current_situation = situation
             break 
-    count = 0 
+    count = 0 #just here to make sure the demo doesn't last forevor
     while current_situation.valid(get_gamestate()) and count < 10:
         role_assignment(play.tick())
         count = count + 1
