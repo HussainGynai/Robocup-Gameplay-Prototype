@@ -5,40 +5,47 @@ class Kick(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
-		print("Robot #", self.robot, "is Kicking")
+	def spin(self, context) -> None:
+		print("Robot #" + self.robot, "is Kicking")
 
 class Capture(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
-		print("Robot #", self.robot, "is Capturing")
+	def spin(self, context) -> None:
+		print("Robot #" + self.robot, "is Capturing")
 
 class Move(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
-		print("Robot #", self.robot, "is Moving")
+	def spin(self, context) -> None:
+		print("Robot #" + self.robot, "is Moving")
 
 class LineKick(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
+	def spin(self, context) -> None:
 		print("Robot #", self.robot, "is Line Kicking")
 
 class Aim(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
+	def spin(self, context) -> None:
 		print("Robot #", self.robot, "is Aiming")
 
 class Chip(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
-	def spin(self) -> None:
+	def spin(self, context) -> None:
 		print("Robot #", self.robot, "is Chipping")
+
+class GoalieAction(Action):
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self, context) -> None:
+		print("Robot #", self.robot, "is Defending the Goal")

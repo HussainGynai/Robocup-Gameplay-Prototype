@@ -42,7 +42,7 @@ class SeekTactic(Tactic):
 		self.role_requests = [self.seeker]
 		self.seeking_heuristic = seeking_heuristic
 
-	def role_request(self) -> List[Role]:
+	def role_request(self) -> List[RoleRequest]:
 		return self.role_requests
 
 	def tick(self) -> List[Skill]:
@@ -52,3 +52,19 @@ class SeekTactic(Tactic):
 		skill_list.append(self.seek_gen)
 		while (1):
 			yield skill_list
+
+class GoalieTactic(Tactic):
+	def __init__(self, goalie_selector):
+		self.goalie = RoleRequest(goalie_selector, None, RoleRequestPriority.HIGH)
+		self.role_requests = [self.goalie]
+
+	def role_request(self) -> List[RoleRequest]:
+		return self.role_requests
+
+	def tick(self) -> List[Skill]:
+		self.defend_goal = skills.GoalieSkill(self.goalie.get_role())
+		self.goalie_gen = self.defend_goal.tick()
+		skill_list = []
+		skill_list.append(self.goalie_gen)
+		while(1):
+			yield skill_list 

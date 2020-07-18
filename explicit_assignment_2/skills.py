@@ -54,3 +54,17 @@ class Seek(Skill):
 	def assign_role(self, role: Role) -> None:
 		self.previous_role = self.role
 		self.role = role
+
+class GoalieSkill(Skill):
+	def __init__(self, role: Role):
+		self.role = role
+		self.previous_role = None
+
+	def tick(self) -> Action:
+		self.defend_goal = actions.GoalieAction(self.role.robot)
+		while(1):
+			yield self.defend_goal
+
+	def assign_role(self, role: Role) -> None:
+		self.previous_role = self.role
+		self.role = role
