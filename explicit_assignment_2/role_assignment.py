@@ -34,6 +34,3 @@ def role_assigner(role_requests: List[RoleRequest]):
                     request.assign(replacement.get_robot())
                     replacement.assign(None)
         count = count + 1
-        """
-        communicates to planning and rest of codebase which robots should do what through ROS
-        """
