@@ -2,25 +2,43 @@ from classes import Action
 from typing import List, Set, Optional, Tuple, Type, TypeVar, Callable
 
 class Kick(Action):
-	def spin(self, robot) -> None:
-		print("Kicking")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Kicking")
 
 class Capture(Action):
-	def spin(self, robot) -> None:
-		print("Capturing")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Capturing")
 
 class Move(Action):
-	def spin(self, robot) -> None:
-		print("Moving")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Moving")
 
 class LineKick(Action):
-	def spin(self, robot) -> None:
-		print("Line Kicking")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Line Kicking")
 
 class Aim(Action):
-	def spin(self, robot) -> None:
-		print("Aiming")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Aiming")
 
 class Chip(Action):
-	def spin(self, robot) -> None:
-		print("Chipping")
+	def __init__(self, robot):
+		self.robot = robot
+
+	def spin(self) -> None:
+		print("Robot #", self.robot, "is Chipping")

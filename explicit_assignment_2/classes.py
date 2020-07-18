@@ -2,13 +2,14 @@ from typing import List, Set, Optional, Tuple, Type, TypeVar, Callable
 from enum import Enum, auto
 from abc import abstractmethod, ABC
 
-class GameState:
-    def __init__(self, our_robots, their_robots, ball, possession):
-        self.our_robots = our_robots
-        self.their_robots = their_robots
-        self.ball = ball
-        self.possession = possession
-        # etc.
+class Role:
+	def __init__(self):
+		self.robot = None
+		self.skill = None
+
+	def assign_robot(self, robot: int) -> None:
+		self.robot = robot
+
 
 class Action(ABC):
 	def spin(self) -> None:
@@ -19,7 +20,7 @@ class Skill(ABC):
 	def __init__(self, Role: Role):
 		...
 
-	def tick(self, game_state: GameState) -> Action:
+	def tick(self) -> Action:
 		...
 
 	def assign_role(self, role: Role):
@@ -30,16 +31,6 @@ class RoleRequestPriority(Enum):
     MEDIUM = 2
     LOW = 3
 
-class Role:
-	def __init__(self):
-		self.robot = None
-		self.skill = None
-
-	def assign_robot(self, robot: int) -> None:
-		self.robot = robot
-
-	def assign_skill(self, skill: Skill) -> None:
-		self.skill = skill
 
 class RoleRequest:
 	def __init__(self, cost: Callable[...,float], constraints, priority: RoleRequestPriority, last_role: Optional[Role] = None):
@@ -55,6 +46,12 @@ class RoleRequest:
 	def get_role(self) -> Role:
 		return self.role
 
+	def assign(self, robot) -> None:
+		self.role.assign_robot(robot)
+
+	def get_robot(self):
+		return self.role.robot
+
 class Tactic(ABC):
 	def __init__(self):
 		...
@@ -62,14 +59,14 @@ class Tactic(ABC):
 	def role_request(self) -> List[Role]:
 		...
 
-	def tick(self) -> List[Skills]:
+	def tick(self) -> List[Skill]:
 		...
 
 class Play(ABC):
 	def __init__(self):
 		...
 
-	def tick(self) -> List[Role]:
+	def tick(self) -> List[Skill]:
 		...
 
 
