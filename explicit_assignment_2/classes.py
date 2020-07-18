@@ -11,7 +11,7 @@ class GameState:
         # etc.
 
 class Action(ABC):
-	def run(self) -> None:
+	def spin(self) -> None:
 		...
 
 class Skill(ABC):
@@ -22,8 +22,13 @@ class Skill(ABC):
 	def tick(self, game_state: GameState) -> Action:
 		...
 
-	def is_role_changed(self) -> bool:
+	def assign_role(self, role: Role):
 		...
+
+class RoleRequestPriority(Enum):
+    HIGH = 1
+    MEDIUM = 2
+    LOW = 3
 
 class Role:
 	def __init__(self):
@@ -37,14 +42,18 @@ class Role:
 		self.skill = skill
 
 class RoleRequest:
-	def __init__(self, cost: Callable[...,float], constraints, last_role: Role):
+	def __init__(self, cost: Callable[...,float], constraints, priority: RoleRequestPriority, last_role: Optional[Role] = None):
 		self.cost = cost
 		self.constraints = constraints
 		self.last_role = last_role
 		self.role = Role()
+		self.priority = priority
 
 	def is_assigned(self) -> bool:
 		return self.role.robot is not None
+
+	def get_role(self) -> Role:
+		return self.role
 
 class Tactic(ABC):
 	def __init__(self):
