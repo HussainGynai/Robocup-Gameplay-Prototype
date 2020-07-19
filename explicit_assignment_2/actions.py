@@ -6,21 +6,21 @@ class Kick(Action):
 		self.robot = robot
 
 	def spin(self, context) -> None:
-		print("Robot #" + self.robot, "is Kicking")
+		print("Robot #", self.robot, "is Kicking")
 
 class Capture(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
 	def spin(self, context) -> None:
-		print("Robot #" + self.robot, "is Capturing")
+		print("Robot #", self.robot, "is Capturing")
 
 class Move(Action):
 	def __init__(self, robot):
 		self.robot = robot
 
 	def spin(self, context) -> None:
-		print("Robot #" + self.robot, "is Moving")
+		print("Robot #", self.robot, "is Moving")
 
 class LineKick(Action):
 	def __init__(self, robot):
